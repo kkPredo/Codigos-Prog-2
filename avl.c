@@ -137,6 +137,18 @@ void balancear(node **raizptr){
     }
 }
 
+void mostraralturaefator(node *raiz){
+    if (raiz == NULL){
+        return;
+    }
+
+    printf("Nó %d -> Altura: %d | Fator de balanceamento: %d\n", raiz->dado, altura(raiz), fatorbalaceamento(raiz));
+
+    mostraralturaefator(raiz->esquerda);
+
+    mostraralturaefator(raiz->direita);
+}
+
 //---------------------------------------------//
 
 //valor booleano para decidir true(verdadeiro) ou false(falso)
@@ -278,8 +290,9 @@ int main(){
         printf("4 - exibir em pré-ordem\n");
         printf("5 - exibir em ordem\n");
         printf("6 - exibir em pós-ordem\n");
-        printf("7 - remover valor\n");     
-        printf("8 - sair\n");
+        printf("7 - remover valor\n");  
+        printf("8 - exibir altura e fator de balanceamento\n");   
+        printf("9 - sair\n");
         printf("escolha: ");
         scanf("%d", &opcao);
         printf("\n");
@@ -332,6 +345,10 @@ int main(){
             break;
 
             case 8:
+               mostraralturaefator(raiz);
+               break;
+
+            case 9:
                 rodando = false;
                 printf("saindo da operação...\n");
             break;
